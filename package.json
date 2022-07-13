@@ -1,6 +1,6 @@
 {
 	"name": "starton-boilerplate-next",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"private": true,
 	"license": "Apache-2.0",
 	"author": {
@@ -35,6 +35,7 @@
 		"lodash": "^4.17.21",
 		"next": "12.2.2",
 		"next-seo": "^5.4.0",
+		"next-translate": "^1.5.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-redux": "^8.0.2"

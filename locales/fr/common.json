@@ -1,0 +1,11 @@
+{
+	"common": {
+		"loadingText": "Chargement...",
+		"loadingError": "Erreur de récupération de données... Nouvel essai dans quelques secondes."
+	},
+	"languages": {
+		"fr": "Français",
+		"en": "Anglais"
+	},
+	"welcome-msg": "Starton Boilerplate pour NextJS"
+}
