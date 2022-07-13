@@ -13,13 +13,15 @@ import { DefaultSeo } from 'next-seo'
 import { createTheme } from '@mui/material/styles'
 import { Provider } from 'react-redux'
 import { deepmerge } from '@mui/utils'
-import { enUS } from '@mui/material/locale'
+import { frFR, enUS, Localization } from '@mui/material/locale'
 import merge from 'lodash/merge'
 import { DEFAULT_SEO_PROPS, DefaultSeoPropsExtra } from 'config/common/seo.config'
 import { store } from 'stores/store'
 import createEmotionCache from 'utils/createEmotionCache'
 import theme from 'styles/theme'
 import { useGetCanonialUrl } from 'hooks/useGetCanonialUrl'
+import { Dictionary } from 'utils'
+import { AvailableLanguages } from 'contracts'
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,16 @@ import { useGetCanonialUrl } from 'hooks/useGetCanonialUrl'
 |--------------------------------------------------------------------------
 */
 const clientSideEmotionCache = createEmotionCache()
+
+/*
+|--------------------------------------------------------------------------
+| Localization array for connected Material UI with Next Translate
+|--------------------------------------------------------------------------
+*/
+const connectedLanguages: Dictionary<Localization, AvailableLanguages> = {
+	en: enUS,
+	fr: frFR,
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -70,11 +82,13 @@ export default function StartonApp({
 	// MUI create theme with I18N changer
 	// ----------------------------------------------------------------------------
 	const MUITheme = React.useMemo(() => {
-		const partnerTheme = {} as ThemeOptions
+		// TIPS: We can replace this value with something from API
+		const apiDataOrSomething = {} as ThemeOptions
 
 		// Deep merge theme options with default theme and partner theme
-		return createTheme(deepmerge(theme, partnerTheme), enUS)
-	}, [])
+		const locale: AvailableLanguages = (router.locale?.toLowerCase() as unknown as AvailableLanguages) ?? 'en'
+		return createTheme(deepmerge(theme, apiDataOrSomething), connectedLanguages?.[locale] ?? enUS)
+	}, [router.locale])
 
 	// Render
 	// ----------------------------------------------------------------------------

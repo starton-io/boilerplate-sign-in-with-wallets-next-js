@@ -2,16 +2,25 @@
 
 ## Dependencies included
 
-- [Material UI + Emotion](https://mui.com/)
-- [Redux (With redux-toolkit)](https://redux-toolkit.js.org/)
-- [Lodash (use sparingly)](https://lodash.com/docs/)
-- [Next SEO](https://github.com/garmeeh/next-seo)
-- [Next Sitemap](https://github.com/iamvishnusankar/next-sitemap)
+- [TypeScript](https://www.typescriptlang.org/)
+
+### Code Quality
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 - [Husky](https://github.com/typicode/husky)
 - [Lint Staged](https://github.com/okonet/lint-staged)
-- [TypeScript](https://www.typescriptlang.org/)
+
+### UI
+- [Material UI + Emotion](https://mui.com/)
+
+### Tools
+- [Redux (With redux-toolkit)](https://redux-toolkit.js.org/)
+- [Lodash (use sparingly)](https://lodash.com/docs/)
+
+### Next library
+- [Next SEO](https://github.com/garmeeh/next-seo)
+- [Next Sitemap](https://github.com/iamvishnusankar/next-sitemap)
+- [Next Translate](https://github.com/vinissimus/next-translate)
 
 ## Project structure
 
