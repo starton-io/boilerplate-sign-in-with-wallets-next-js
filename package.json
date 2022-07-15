@@ -1,6 +1,6 @@
 {
 	"name": "starton-boilerplate-next",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"private": true,
 	"license": "Apache-2.0",
 	"author": {
@@ -14,9 +14,9 @@
 		"start": "next start",
 		"lint": "next lint --fix",
 		"type-check": "tsc --project tsconfig.json --pretty --noEmit",
-		"postinstall": "husky install",
-		"postbuild": "next-sitemap",
-		"init-cq": "yarn husky add .husky/pre-commit \"yarn lint-staged\""
+		"init-cq": "yarn husky add .husky/pre-commit \"yarn lint-staged\"",
+		"postinstall": "husky install && npm run init-cq",
+		"postbuild": "next-sitemap"
 	},
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx}": [
