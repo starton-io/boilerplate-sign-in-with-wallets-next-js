@@ -14,7 +14,7 @@
 		"start": "next start",
 		"lint": "next lint --fix",
 		"type-check": "tsc --project tsconfig.json --pretty --noEmit",
-		"init-cq": "yarn husky add .husky/pre-commit \"yarn lint-staged\"",
+		"init-cq": "yarn husky set .husky/pre-commit \"yarn lint-staged\"",
 		"postinstall": "husky install && npm run init-cq",
 		"postbuild": "next-sitemap"
 	},
@@ -41,6 +41,7 @@
 		"react-redux": "^8.0.2"
 	},
 	"devDependencies": {
+		"@starton/eslint-config-nextjs": "^1.1.2",
 		"@types/lodash": "^4.14.182",
 		"@types/node": "18.0.3",
 		"@types/react": "18.0.15",

@@ -5,12 +5,11 @@
 
 import '../styles/globals.css'
 import React from 'react'
-import { ThemeOptions, ThemeProvider } from '@mui/material/styles'
+import { ThemeOptions, ThemeProvider, createTheme } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import type { AppProps } from 'next/app'
 import { DefaultSeo } from 'next-seo'
-import { createTheme } from '@mui/material/styles'
 import { Provider } from 'react-redux'
 import { deepmerge } from '@mui/utils'
 import { frFR, enUS, Localization } from '@mui/material/locale'
