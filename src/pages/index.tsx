@@ -16,7 +16,10 @@ import Logged from 'components/Logged'
 
 const Home: NextPage = () => {
 	const { t } = useTranslation()
-	const { isConnected } = useAccount()
+	const ref = useAccount()
+	const [isConnected, setIsConnected] = React.useState(false)
+
+	React.useEffect(() => setIsConnected(ref.isConnected), [ref])
 
 	return (
 		<React.Fragment>
