@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi'
+import { useAccount, useDisconnect, useEnsName } from 'wagmi'
 import { Typography, Button, Card, CardContent } from '@mui/material'
 import startonStyles from 'styles/Starton.module.css'
 

@@ -5,7 +5,7 @@
 */
 
 import * as React from 'react'
-import { Button, Card, CardContent, Paper, Typography } from '@mui/material'
+import { Button, Card, CardContent, Typography } from '@mui/material'
 import { useConnect } from 'wagmi'
 import Image from 'next/image'
 import startonStyles from '../styles/Starton.module.css'

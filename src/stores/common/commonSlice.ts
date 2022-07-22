@@ -4,7 +4,7 @@
 */
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from 'store/store'
+import { RootState } from 'stores/store'
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +48,7 @@ export const commonsSlice = createSlice({
 | EXPORT SELECTORS
 |--------------------------------------------------------------------------
 */
-export const selectUIStaticTopBanner = (state: RootState) => state.commons.ui.staticTopBanner
+export const selectUIStaticTopBanner = (state: RootState) => state.common.ui.staticTopBanner
 
 /*
 |--------------------------------------------------------------------------

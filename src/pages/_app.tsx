@@ -15,6 +15,12 @@ import { Provider } from 'react-redux'
 import { deepmerge } from '@mui/utils'
 import { frFR, enUS, Localization } from '@mui/material/locale'
 import merge from 'lodash/merge'
+import { WagmiConfig, createClient, defaultChains, configureChains } from 'wagmi'
+import { alchemyProvider } from 'wagmi/providers/alchemy'
+import { publicProvider } from 'wagmi/providers/public'
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { DEFAULT_SEO_PROPS, DefaultSeoPropsExtra } from 'config/common/seo.config'
 import { store } from 'stores/store'
 import createEmotionCache from 'utils/createEmotionCache'
@@ -22,19 +28,7 @@ import theme from 'styles/theme'
 import { useGetCanonialUrl } from 'hooks/useGetCanonialUrl'
 import { Dictionary } from 'utils'
 import { AvailableLanguages } from 'contracts'
-import {
-	WagmiConfig,
-	createClient,
-	defaultChains,
-	configureChains,
-} from 'wagmi'
 
-import { alchemyProvider } from 'wagmi/providers/alchemy'
-import { publicProvider } from 'wagmi/providers/public'
-
-import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 /*
 |--------------------------------------------------------------------------
 | Client-side cache, shared for the whole session of the user in the browser.
@@ -102,13 +96,10 @@ export default function StartonApp({
 		return createTheme(deepmerge(theme, apiDataOrSomething), connectedLanguages?.[locale] ?? enUS)
 	}, [router.locale])
 
-
-
 	//Wagmi config
 	// ----------------------------------------------------------------------------
 
 	const alchemyId = process.env.ALCHEMY_ID
-
 
 	const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
 		alchemyProvider({ alchemyId }),
@@ -130,7 +121,7 @@ export default function StartonApp({
 				options: {
 					qrcode: true,
 				},
-			})
+			}),
 		],
 		provider,
 		webSocketProvider,

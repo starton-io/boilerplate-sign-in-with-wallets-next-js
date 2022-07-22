@@ -28,13 +28,7 @@ const Home: NextPage = () => {
 						{t('common:starton-tagline')}
 					</Typography>
 				</div>
-				<div>
-					{!isConnected ? (
-						<SignInWithWallet />
-					) : (
-						<Logged />
-					)}
-				</div>
+				<div>{!isConnected ? <SignInWithWallet /> : <Logged />}</div>
 				<Box className={startonStyles.box}>
 					<Typography variant="h5" className={startonStyles.link}>
 						Join us on{' '}
