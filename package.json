@@ -32,13 +32,15 @@
 		"@mui/material": "^5.9.0",
 		"@reduxjs/toolkit": "^1.8.3",
 		"@types/react-redux": "^7.1.24",
+		"ethers": "^5.6.9",
 		"lodash": "^4.17.21",
 		"next": "12.2.2",
 		"next-seo": "^5.4.0",
 		"next-translate": "^1.5.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
-		"react-redux": "^8.0.2"
+		"react-redux": "^8.0.2",
+		"wagmi": "^0.5.11"
 	},
 	"devDependencies": {
 		"@types/lodash": "^4.14.182",

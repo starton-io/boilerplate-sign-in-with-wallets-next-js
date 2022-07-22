@@ -22,7 +22,19 @@ import theme from 'styles/theme'
 import { useGetCanonialUrl } from 'hooks/useGetCanonialUrl'
 import { Dictionary } from 'utils'
 import { AvailableLanguages } from 'contracts'
+import {
+	WagmiConfig,
+	createClient,
+	defaultChains,
+	configureChains,
+} from 'wagmi'
 
+import { alchemyProvider } from 'wagmi/providers/alchemy'
+import { publicProvider } from 'wagmi/providers/public'
+
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 /*
 |--------------------------------------------------------------------------
 | Client-side cache, shared for the whole session of the user in the browser.
@@ -90,6 +102,40 @@ export default function StartonApp({
 		return createTheme(deepmerge(theme, apiDataOrSomething), connectedLanguages?.[locale] ?? enUS)
 	}, [router.locale])
 
+
+
+	//Wagmi config
+	// ----------------------------------------------------------------------------
+
+	const alchemyId = process.env.ALCHEMY_ID
+
+
+	const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
+		alchemyProvider({ alchemyId }),
+		publicProvider(),
+	])
+
+	const client = createClient({
+		autoConnect: true,
+		connectors: [
+			new MetaMaskConnector({ chains }),
+			new CoinbaseWalletConnector({
+				chains,
+				options: {
+					appName: 'wagmi',
+				},
+			}),
+			new WalletConnectConnector({
+				chains,
+				options: {
+					qrcode: true,
+				},
+			})
+		],
+		provider,
+		webSocketProvider,
+	})
+
 	// Render
 	// ----------------------------------------------------------------------------
 	return (
@@ -99,7 +145,9 @@ export default function StartonApp({
 					<DefaultSeo {...defaultDataProps} />
 					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 					<CssBaseline />
-					<Component {...pageProps} />
+					<WagmiConfig client={client}>
+						<Component {...pageProps} />
+					</WagmiConfig>
 				</ThemeProvider>
 			</Provider>
 		</CacheProvider>
