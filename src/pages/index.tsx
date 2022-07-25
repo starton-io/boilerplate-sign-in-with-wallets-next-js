@@ -34,7 +34,7 @@ const Home: NextPage = () => {
 				<div>{!isConnected ? <SignInWithWallet /> : <Logged />}</div>
 				<Box className={startonStyles.box}>
 					<Typography variant="h5" className={startonStyles.link}>
-						Join us on{' '}
+						{t('common:join-us')}
 						<a
 							target="_blank"
 							href={'https://discord.starton.io'}
@@ -45,13 +45,13 @@ const Home: NextPage = () => {
 						</a>
 					</Typography>
 					<Typography variant="h5" className={startonStyles.link}>
-						Discover our{' '}
+						{t('common:discover')}
 						<a target="_blank" href={'https://starton.io'} className={startonStyles.a} rel="noreferrer">
-							website
+							{t('common:website')}
 						</a>
 					</Typography>
 					<Typography variant="h5" className={startonStyles.link}>
-						Start building{' '}
+						{t('common:start-building')}
 						<a target="_blank" href={'https://app.starton.io'} className={startonStyles.a} rel="noreferrer">
 							web3
 						</a>

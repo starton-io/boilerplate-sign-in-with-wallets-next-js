@@ -10,7 +10,10 @@
 	"welcome-msg": "Starton Boilerplate pour NextJS",
 	"starton-tagline": " Unleash Web 3.0",
 	"sign-in-with": "Se connecter avec ",
-	"successfully-logged": "Vous vous êtes connectés avec succès !",
-	"your_address": "L'adresse de votre wallet est : ",
-	"logout-instructions": "Pour vous déconnecter, rendez-vous sur votre wallet dans l'onglet \"Sites connectés\" et supprimer ce site de la liste."
+	"join-us" : "Rejoignez-nous sur ",
+	"discover" : "Découvrer notre ",
+	"start-building" : "Commencez à construire sur le ",
+	"website" : "site web",
+	"connected" : "Vous êtes connectés avec le wallet ",
+	"disconnect": "Se déconnecter"
 }

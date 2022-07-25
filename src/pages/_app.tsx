@@ -16,7 +16,6 @@ import { deepmerge } from '@mui/utils'
 import { frFR, enUS, Localization } from '@mui/material/locale'
 import merge from 'lodash/merge'
 import { WagmiConfig, createClient, defaultChains, configureChains } from 'wagmi'
-import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { publicProvider } from 'wagmi/providers/public'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
@@ -96,16 +95,13 @@ export default function StartonApp({
 		return createTheme(deepmerge(theme, apiDataOrSomething), connectedLanguages?.[locale] ?? enUS)
 	}, [router.locale])
 
-	//Wagmi config
+	// Wagmi config : configure desired chains to be used.
+	// Need to setup chains or providers ? Go here : https://wagmi.sh/docs/providers/configuring-chains
 	// ----------------------------------------------------------------------------
 
-	const alchemyId = process.env.ALCHEMY_ID
+	const { chains, provider, webSocketProvider } = configureChains(defaultChains, [publicProvider()])
 
-	const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
-		alchemyProvider({ alchemyId }),
-		publicProvider(),
-	])
-
+	//Init Wagmi client
 	const client = createClient({
 		autoConnect: true,
 		connectors: [
@@ -136,6 +132,7 @@ export default function StartonApp({
 					<DefaultSeo {...defaultDataProps} />
 					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 					<CssBaseline />
+					{/* Wrap in wagmi component and passing client to it*/}
 					<WagmiConfig client={client}>
 						<Component {...pageProps} />
 					</WagmiConfig>
