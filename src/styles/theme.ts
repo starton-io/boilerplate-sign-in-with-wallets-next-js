@@ -50,8 +50,9 @@ export default {
 			red: '#EA5455',
 			green: '#28C76F',
 		},
-		color: {
-			primary: '#555454',
+		primary: {
+			main: '#555454',
+			dark: '#ffffff',
 		},
 	},
 	spacing: 8,

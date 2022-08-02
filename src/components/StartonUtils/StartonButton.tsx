@@ -26,7 +26,7 @@ const StartonButtonStyled = styled(Button)(({ theme }) => ({
 	fontSize: 14,
 	marginTop: theme.spacing(2),
 	'&.MuiButton-root.MuiButton-outlined': {
-		border: `3px solid ${theme.palette.color.primary}`,
+		border: `3px solid ${theme.palette.primary}`,
 		borderRadius: 6,
 	},
 }))
