@@ -7,9 +7,10 @@
 
 import * as React from 'react'
 import { useAccount, useDisconnect, useEnsName } from 'wagmi'
-import { Typography, Button, Card, CardContent } from '@mui/material'
+import { Typography, Card, CardContent } from '@mui/material'
 import useTranslation from 'next-translate/useTranslation'
-import startonStyles from 'styles/Starton.module.css'
+import { StartonBox } from 'components/StartonUtils/StartonBox'
+import { StartonButton } from 'components/StartonUtils/StartonButton'
 
 /*
 |--------------------------------------------------------------------------
@@ -25,19 +26,18 @@ export default function Logged() {
 	const { disconnect } = useDisconnect()
 
 	return (
-		<Card className={startonStyles.wallets}>
+		<Card>
 			<CardContent>
-				{' '}
-				<div className={startonStyles.div} style={{ marginTop: '3em' }}>
+				<StartonBox style={{ marginTop: '3em' }}>
 					<Typography variant="h5" sx={{ fontWeight: 'bold' }}>
 						{t('common:connected')} {ensName ? `${ensName} (${address})` : address}
 					</Typography>
-				</div>
-				<div className={startonStyles.box}>
-					<Button variant="outlined" color="error" onClick={() => disconnect()} size={'large'}>
+				</StartonBox>
+				<StartonBox sx={{ marginTop: '1em' }}>
+					<StartonButton variant="outlined" color="error" onClick={() => disconnect()} size={'large'}>
 						{t('common:disconnect')}
-					</Button>
-				</div>
+					</StartonButton>
+				</StartonBox>
 			</CardContent>
 		</Card>
 	)

@@ -79,7 +79,6 @@ export default function StartonApp({
 				url,
 			},
 		}
-
 		// Deep merging
 		return merge(DEFAULT_SEO_PROPS, seoProps)
 	}, [url])
