@@ -5,28 +5,24 @@
 
 import '../styles/globals.css'
 import React from 'react'
-import { ThemeOptions, ThemeProvider } from '@mui/material/styles'
+import { ThemeOptions, ThemeProvider, createTheme } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import type { AppProps } from 'next/app'
 import { DefaultSeo } from 'next-seo'
-import { createTheme } from '@mui/material/styles'
 import { Provider } from 'react-redux'
 import { deepmerge } from '@mui/utils'
 import { frFR, enUS, Localization } from '@mui/material/locale'
 import merge from 'lodash/merge'
-import { WagmiConfig, createClient, defaultChains, configureChains } from 'wagmi'
-import { publicProvider } from 'wagmi/providers/public'
-import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
+import { WagmiConfig } from 'wagmi'
 import { DEFAULT_SEO_PROPS, DefaultSeoPropsExtra } from 'config/common/seo.config'
 import { store } from 'stores/store'
-import createEmotionCache from 'utils/createEmotionCache'
+import { createEmotionCache } from 'utils/createEmotionCache'
 import theme from 'styles/theme'
 import { useGetCanonialUrl } from 'hooks/useGetCanonialUrl'
 import { Dictionary } from 'utils'
 import { AvailableLanguages } from 'contracts'
+import { wagmiClient } from 'services/wagmi/wagmi.service'
 
 /*
 |--------------------------------------------------------------------------
@@ -79,7 +75,6 @@ export default function StartonApp({
 				url,
 			},
 		}
-
 		// Deep merging
 		return merge(DEFAULT_SEO_PROPS, seoProps)
 	}, [url])
@@ -95,34 +90,6 @@ export default function StartonApp({
 		return createTheme(deepmerge(theme, apiDataOrSomething), connectedLanguages?.[locale] ?? enUS)
 	}, [router.locale])
 
-	// Wagmi config : configure desired chains to be used.
-	// Need to setup chains or providers ? Go here : https://wagmi.sh/docs/providers/configuring-chains
-	// ----------------------------------------------------------------------------
-
-	const { chains, provider, webSocketProvider } = configureChains(defaultChains, [publicProvider()])
-
-	//Init Wagmi client
-	const client = createClient({
-		autoConnect: true,
-		connectors: [
-			new MetaMaskConnector({ chains }),
-			new CoinbaseWalletConnector({
-				chains,
-				options: {
-					appName: 'wagmi',
-				},
-			}),
-			new WalletConnectConnector({
-				chains,
-				options: {
-					qrcode: true,
-				},
-			}),
-		],
-		provider,
-		webSocketProvider,
-	})
-
 	// Render
 	// ----------------------------------------------------------------------------
 	return (
@@ -133,7 +100,7 @@ export default function StartonApp({
 					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 					<CssBaseline />
 					{/* Wrap in wagmi component and passing client to it*/}
-					<WagmiConfig client={client}>
+					<WagmiConfig client={wagmiClient}>
 						<Component {...pageProps} />
 					</WagmiConfig>
 				</ThemeProvider>

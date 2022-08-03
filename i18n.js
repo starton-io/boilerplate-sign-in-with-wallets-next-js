@@ -15,10 +15,4 @@ module.exports = {
 		'*': ['common'],
 		'/': ['index'],
 	},
-	interpolation: {
-		format: (value, format, lang) => {
-			if (format === 'number') return formatters[lang]?.format(value) ?? value
-			return value
-		},
-	},
 }

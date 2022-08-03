@@ -2,5 +2,15 @@
 	"seo": {
 		"title": "Home",
 		"description": "Our homepage"
+	},
+	"content": {
+		"starton-tagline": "Unleash Web 3.0",
+		"sign-in-with": "Sign in with",
+		"join-us" : "Join us on ",
+		"discover" : "Discover our ",
+		"start-building" : "Start building ",
+		"website" : "website",
+		"connected" : "You are connected with the wallet",
+		"disconnect": "Disconnect"
 	}
 }
