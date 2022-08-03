@@ -50,6 +50,47 @@ export default {
 			red: '#EA5455',
 			green: '#28C76F',
 		},
+		primary: {
+			main: '#151A1F',
+			dark: '#29343D',
+			light: '#FFFFFF',
+			contrastText: '#FFFFFF',
+		},
+		secondary: {
+			main: '#01B29E',
+			dark: '#017F71',
+			light: '#E6FFFC',
+			contrastText: '#FFFFFF',
+		},
+		text: {
+			primary: '#151A1F',
+			secondary: '#1F272E',
+			disabled: '#678298',
+		},
+		background: {
+			default: '#F3F5F7',
+			paper: '#FFFFFF',
+		},
+	},
+	typography: {
+		h1: {
+			fontSize: 32,
+			paragraphSpacing: 0,
+			textDecoration: 'none',
+			textCase: 'none',
+		},
+		h2: {
+			fontSize: 24,
+			paragraphSpacing: 0,
+			textDecoration: 'none',
+			textCase: 'none',
+		},
+		h3: {
+			fontSize: 10,
+			paragraphSpacing: 0,
+			textDecoration: 'none',
+			textCase: 'none',
+		},
 	},
 	spacing: 8,
 	shape: {
