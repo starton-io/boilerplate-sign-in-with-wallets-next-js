@@ -5,24 +5,13 @@
 */
 
 import * as React from 'react'
-import { Card, CardContent, Typography, styled } from '@mui/material'
+import { CardContent, Typography } from '@mui/material'
 import { useConnect } from 'wagmi'
 import Image from 'next/image'
 import useTranslation from 'next-translate/useTranslation'
 import { StartonBox } from 'components/StartonUtils/StartonBox'
 import { StartonButton } from 'components/StartonUtils/StartonButton'
-
-/*
-|--------------------------------------------------------------------------
-| Styles
-|--------------------------------------------------------------------------
-*/
-const StartonSignInStyled = styled(Card)(() => ({
-	display: 'flex',
-	flexDirection: 'column',
-	justifyContent: 'center',
-	padding: '5em',
-}))
+import { StartonAuthCard } from 'components/StartonUtils/StartonAuthCard'
 
 /*
 |--------------------------------------------------------------------------
@@ -35,19 +24,19 @@ export default function SignInWithWallet() {
 
 	//utiliser styled pour les composants
 	return (
-		<StartonSignInStyled>
+		<StartonAuthCard>
 			<CardContent>
 				<StartonBox>
-					<Typography variant="h3">{t('common:sign-in-with')}</Typography>
+					<Typography variant="h2">{t('index:content.sign-in-with')}</Typography>
 				</StartonBox>
 				<StartonBox>
 					{connectors.map((connector) => (
 						<StartonButton variant={'outlined'} key={connector.id} onClick={() => connect({ connector })}>
 							<Image
-								alt={''}
+								alt={connector.name}
 								src={`/${connector.name.replace(/\s/g, '')}.svg`}
-								width={200}
-								height={100}
+								width={175}
+								height={75}
 							/>
 						</StartonButton>
 					))}
@@ -58,6 +47,6 @@ export default function SignInWithWallet() {
 					</StartonBox>
 				)}
 			</CardContent>
-		</StartonSignInStyled>
+		</StartonAuthCard>
 	)
 }

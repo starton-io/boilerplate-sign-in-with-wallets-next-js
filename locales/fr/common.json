@@ -6,14 +6,5 @@
 	"languages": {
 		"fr": "Français",
 		"en": "Anglais"
-	},
-	"welcome-msg": "Starton Boilerplate pour NextJS",
-	"starton-tagline": " Unleash Web 3.0",
-	"sign-in-with": "Se connecter avec ",
-	"join-us" : "Rejoignez-nous sur ",
-	"discover" : "Découvrer notre ",
-	"start-building" : "Commencez à construire sur le ",
-	"website" : "site web",
-	"connected" : "Vous êtes connectés avec le wallet ",
-	"disconnect": "Se déconnecter"
+	}
 }

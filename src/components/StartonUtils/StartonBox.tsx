@@ -14,6 +14,7 @@ import { Box, BoxProps, styled } from '@mui/material'
 |--------------------------------------------------------------------------
 */
 export interface StartonBoxProps extends BoxProps {}
+
 /*
 |--------------------------------------------------------------------------
 | Styles

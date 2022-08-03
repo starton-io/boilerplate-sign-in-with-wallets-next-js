@@ -11,6 +11,7 @@ import { Typography, Card, CardContent } from '@mui/material'
 import useTranslation from 'next-translate/useTranslation'
 import { StartonBox } from 'components/StartonUtils/StartonBox'
 import { StartonButton } from 'components/StartonUtils/StartonButton'
+import { StartonAuthCard } from 'components/StartonUtils/StartonAuthCard'
 
 /*
 |--------------------------------------------------------------------------
@@ -26,19 +27,27 @@ export default function Logged() {
 	const { disconnect } = useDisconnect()
 
 	return (
-		<Card>
+		<StartonAuthCard>
 			<CardContent>
-				<StartonBox style={{ marginTop: '3em' }}>
-					<Typography variant="h5" sx={{ fontWeight: 'bold' }}>
-						{t('common:connected')} {ensName ? `${ensName} (${address})` : address}
+				<StartonBox
+					style={{
+						marginTop: (theme) => theme.spacing(2),
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+					}}
+				>
+					<Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+						{t('index:content.connected')}
 					</Typography>
+					<Typography color={'secondary'}>{ensName ? `${ensName} (${address})` : address}</Typography>
 				</StartonBox>
-				<StartonBox sx={{ marginTop: '1em' }}>
+				<StartonBox sx={{ marginTop: (theme) => theme.spacing(2) }}>
 					<StartonButton variant="outlined" color="error" onClick={() => disconnect()} size={'large'}>
-						{t('common:disconnect')}
+						{t('index:content.disconnect')}
 					</StartonButton>
 				</StartonBox>
 			</CardContent>
-		</Card>
+		</StartonAuthCard>
 	)
 }
