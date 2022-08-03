@@ -41,11 +41,11 @@ export default function SignInWithWallet() {
 						</StartonButton>
 					))}
 				</StartonBox>
-				{error && (
+				{error ? (
 					<StartonBox>
 						<Typography variant="h5">{error.message}</Typography>
 					</StartonBox>
-				)}
+				) : null}
 			</CardContent>
 		</StartonAuthCard>
 	)

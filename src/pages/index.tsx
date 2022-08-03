@@ -8,11 +8,11 @@
 import type { NextPage } from 'next'
 import React from 'react'
 import { NextSeo } from 'next-seo'
-import { Container, Typography } from '@mui/material'
+import { Container, Typography, styled } from '@mui/material'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
 import { useAccount } from 'wagmi'
-import { styled } from '@mui/material'
+import { Theme } from '@mui/system'
 import SignInWithWallet from 'components/SignInWithWallet'
 import Logged from 'components/Logged'
 import { StartonBox } from 'components/StartonUtils/StartonBox'
@@ -53,19 +53,19 @@ const Home: NextPage = () => {
 			<NextSeo title={t('index:seo.title')} description={t('index:seo.description')} />
 			<Container>
 				<StartonBox sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-					<StartonBox sx={{ flexDirection: 'column', marginBottom: (theme) => theme.spacing(10) }}>
+					<StartonBox sx={{ flexDirection: 'column', marginBottom: (theme: Theme) => theme.spacing(10) }}>
 						<Image alt="logo black" src="/logo_monochrome_black.svg" width={150} height={75} />
 						<Typography
 							variant={'h2'}
 							textAlign={'center'}
 							color={'secondary'}
-							sx={{ fontWeight: 'bold', fontSize: '2rem', marginTop: (theme) => theme.spacing(1) }}
+							sx={{ fontWeight: 'bold', fontSize: '2rem', marginTop: (theme: Theme) => theme.spacing(1) }}
 						>
 							{t('index:content.starton-tagline')}
 						</Typography>
 					</StartonBox>
 					<StartonBox>{!isConnected ? <SignInWithWallet /> : <Logged />}</StartonBox>
-					<StartonBox sx={{ marginTop: (theme) => theme.spacing(10) }}>
+					<StartonBox sx={{ marginTop: (theme: Theme) => theme.spacing(10) }}>
 						<Typography variant="h5">
 							{t('index:content.join-us')}
 							<HomeLink target="_blank" href={'https://discord.starton.io'} rel="noreferrer">
