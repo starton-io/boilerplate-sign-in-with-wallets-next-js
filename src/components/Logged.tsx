@@ -37,10 +37,12 @@ export default function Logged() {
 						alignItems: 'center',
 					}}
 				>
-					<Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+					<Typography variant="body2" sx={{ fontWeight: 'bold' }}>
 						{t('index:content.connected')}
 					</Typography>
-					<Typography color={'secondary'}>{address}</Typography>
+					<Typography variant={'body2'} color={'secondary'}>
+						{address}
+					</Typography>
 				</StartonBox>
 				<StartonBox sx={{ margin: (theme: Theme) => theme.spacing(2, 0, 0, 0) }}>
 					<StartonButton variant="outlined" color="error" onClick={() => disconnect()} size={'large'}>
