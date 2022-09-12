@@ -24,7 +24,7 @@ const StartonCard = styled(Card)(({ theme }) => ({
 	flexDirection: 'column',
 	justifyContent: 'center',
 	padding: theme.spacing(3, 5),
-	boxShadow: 'rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px',
+	backgroundColor: theme.palette.background.default,
 }))
 
 /*
@@ -33,5 +33,5 @@ const StartonCard = styled(Card)(({ theme }) => ({
 |--------------------------------------------------------------------------
 */
 export const StartonAuthCard: React.FC<StartonAuthCardProps> = (props) => {
-	return <StartonCard {...props} />
+	return <StartonCard elevation={0} {...props} />
 }

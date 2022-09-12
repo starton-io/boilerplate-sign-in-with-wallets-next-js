@@ -8,11 +8,11 @@
 import type { NextPage } from 'next'
 import React from 'react'
 import { NextSeo } from 'next-seo'
-import { Container, Typography, styled } from '@mui/material'
+import { Container, Typography, styled, Box } from '@mui/material'
 import useTranslation from 'next-translate/useTranslation'
-import Image from 'next/image'
 import { useAccount } from 'wagmi'
 import { Theme } from '@mui/system'
+import { StartonButton, StartonLogotypeWhite } from '@starton/ui-nextjs'
 import SignInWithWallet from 'components/SignInWithWallet'
 import Logged from 'components/Logged'
 import { StartonBox } from 'components/StartonUtils/StartonBox'
@@ -22,19 +22,7 @@ import { StartonBox } from 'components/StartonUtils/StartonBox'
 | Styles
 |--------------------------------------------------------------------------
 */
-const HomeLink = styled('a')(({ theme }) => ({
-	color: theme.palette.primary.contrastText,
-	background: theme.palette.primary.main,
-	padding: theme.spacing(1),
-	borderRadius: '4px',
-	boxShadow:
-		'rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px',
-	transition: 'all 0.15s ease-in-out',
-	'&:hover': {
-		background: theme.palette.secondary.main,
-		color: theme.palette.secondary.contrastText,
-	},
-}))
+const HomeLink = styled('a')(() => ({}))
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +33,25 @@ const Home: NextPage = () => {
 	const { t } = useTranslation()
 	const ref = useAccount()
 	const [isConnected, setIsConnected] = React.useState(false)
+	const links = React.useMemo(() => {
+		return [
+			{
+				sentence: `${t('index:content.join-us')}`,
+				name: 'discord',
+				link: 'https://discord.starton.io',
+			},
+			{
+				sentence: `${t('index:content.discover')}`,
+				name: `${t('index:content.website')}`,
+				link: 'https://starton.io',
+			},
+			{
+				sentence: `${t('index:content.start-building')}`,
+				name: 'web3',
+				link: 'https://starton.io',
+			},
+		]
+	}, [])
 
 	React.useEffect(() => setIsConnected(ref.isConnected), [ref])
 
@@ -53,8 +60,8 @@ const Home: NextPage = () => {
 			<NextSeo title={t('index:seo.title')} description={t('index:seo.description')} />
 			<Container>
 				<StartonBox sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-					<StartonBox sx={{ flexDirection: 'column', marginBottom: (theme: Theme) => theme.spacing(10) }}>
-						<Image alt="logo black" src="/logo_monochrome_black.svg" width={150} height={75} />
+					<StartonBox display={'flex'} alignItems={'center'} flexDirection={'column'} marginBottom={10}>
+						<StartonLogotypeWhite width={'30%'} />
 						<Typography
 							variant={'h2'}
 							textAlign={'center'}
@@ -66,24 +73,16 @@ const Home: NextPage = () => {
 					</StartonBox>
 					<StartonBox>{!isConnected ? <SignInWithWallet /> : <Logged />}</StartonBox>
 					<StartonBox sx={{ marginTop: (theme: Theme) => theme.spacing(10) }}>
-						<Typography variant="h5">
-							{t('index:content.join-us')}
-							<HomeLink target="_blank" href={'https://discord.starton.io'} rel="noreferrer">
-								discord
-							</HomeLink>
-						</Typography>
-						<Typography variant="h5">
-							{t('index:content.discover')}
-							<HomeLink target="_blank" href={'https://starton.io'} rel="noreferrer">
-								{t('index:content.website')}
-							</HomeLink>
-						</Typography>
-						<Typography variant="h5">
-							{t('index:content.start-building')}
-							<HomeLink target="_blank" href={'https://app.starton.io'} rel="noreferrer">
-								web3
-							</HomeLink>
-						</Typography>
+						{links.map((link, index) => (
+							<Box key={index} display={'flex'} alignItems={'center'} gap={1}>
+								<Typography variant={'button'}>{link.sentence}</Typography>
+								<StartonButton variant={'contained'}>
+									<HomeLink target="_blank" href={link.link} rel="noreferrer">
+										{link.name}
+									</HomeLink>
+								</StartonButton>
+							</Box>
+						))}
 					</StartonBox>
 				</StartonBox>
 			</Container>

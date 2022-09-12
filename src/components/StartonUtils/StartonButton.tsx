@@ -35,12 +35,6 @@ const StartonButtonStyled = styled(Button)(({ theme }) => ({
 | Component
 |--------------------------------------------------------------------------
 */
-
-/*
-|--------------------------------------------------------------------------
-| Component
-|--------------------------------------------------------------------------
-*/
 export const StartonButton: React.FC<StartonButtonProps> = (props) => {
 	return <StartonButtonStyled data-testid={'starton-button'} {...props} />
 }
