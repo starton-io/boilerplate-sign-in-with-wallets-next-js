@@ -5,7 +5,7 @@
 
 import '../styles/globals.css'
 import React from 'react'
-import { ThemeOptions, ThemeProvider, createTheme } from '@mui/material/styles'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import type { AppProps } from 'next/app'
@@ -15,6 +15,7 @@ import { deepmerge } from '@mui/utils'
 import { frFR, enUS, Localization } from '@mui/material/locale'
 import merge from 'lodash/merge'
 import { WagmiConfig } from 'wagmi'
+import { startonDarkTheme } from '@starton/ui-nextjs'
 import { DEFAULT_SEO_PROPS, DefaultSeoPropsExtra } from 'config/common/seo.config'
 import { store } from 'stores/store'
 import { createEmotionCache } from 'utils/createEmotionCache'
@@ -82,12 +83,9 @@ export default function StartonApp({
 	// MUI create theme with I18N changer
 	// ----------------------------------------------------------------------------
 	const MUITheme = React.useMemo(() => {
-		// TIPS: We can replace this value with something from API
-		const apiDataOrSomething = {} as ThemeOptions
-
 		// Deep merge theme options with default theme and partner theme
 		const locale: AvailableLanguages = (router.locale?.toLowerCase() as unknown as AvailableLanguages) ?? 'en'
-		return createTheme(deepmerge(theme, apiDataOrSomething), connectedLanguages?.[locale] ?? enUS)
+		return createTheme(deepmerge(startonDarkTheme, theme), connectedLanguages?.[locale] ?? enUS)
 	}, [router.locale])
 
 	// Render

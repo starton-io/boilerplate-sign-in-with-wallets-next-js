@@ -15,7 +15,7 @@ import { StartonAuthCard } from 'components/StartonUtils/StartonAuthCard'
 
 /*
 |--------------------------------------------------------------------------
-| SignIn with Matamask, Coinbase Wallet or WalletConnect using Wagmi connectors
+| SignIn with Metamask, Coinbase Wallet or WalletConnect using Wagmi connectors
 |--------------------------------------------------------------------------
 */
 export default function SignInWithWallet() {
@@ -25,13 +25,15 @@ export default function SignInWithWallet() {
 	//utiliser styled pour les composants
 	return (
 		<StartonAuthCard>
-			<CardContent>
+			<CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
 				<StartonBox>
-					<Typography variant="h2">{t('index:content.sign-in-with')}</Typography>
+					<Typography variant="h2" color={'secondary'}>
+						{t('index:content.sign-in-with')}
+					</Typography>
 				</StartonBox>
 				<StartonBox>
 					{connectors.map((connector) => (
-						<StartonButton variant={'outlined'} key={connector.id} onClick={() => connect({ connector })}>
+						<StartonButton variant={'contained'} key={connector.id} onClick={() => connect({ connector })}>
 							<Image
 								alt={connector.name}
 								src={`/${connector.name.replace(/\s/g, '')}.svg`}
@@ -43,7 +45,9 @@ export default function SignInWithWallet() {
 				</StartonBox>
 				{error ? (
 					<StartonBox>
-						<Typography variant="h5">{error.message}</Typography>
+						<Typography variant="body2" color={'error'}>
+							{error.message}
+						</Typography>
 					</StartonBox>
 				) : null}
 			</CardContent>
