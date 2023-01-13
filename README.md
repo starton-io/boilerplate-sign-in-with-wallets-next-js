@@ -1,7 +1,16 @@
-# Starton Boilerplate - NextJS
 
-## Dependencies included
+# Starton Boilerplate - Sign in with wallets - NextJS
 
+Starton boilerplate to sign in with your wallet (Metamask, WalletConnect, CoinbaseWallet) using NextJS.
+
+Feel free to **[fork](https://github.com/login?return_to=%2Fstarton-io%2Fboilerplate-sign-in-with-wallets-next-js)** this repository!
+
+- Website: https://starton.io
+- Discord: https://discord.starton.io
+- Contact: hello@starton.io
+## Tech Stack
+
+- [Wagmi](https://wagmi.sh/)
 - [TypeScript](https://www.typescriptlang.org/)
 
 ### Code Quality
@@ -21,28 +30,30 @@
 - [Next SEO](https://github.com/garmeeh/next-seo)
 - [Next Sitemap](https://github.com/iamvishnusankar/next-sitemap)
 - [Next Translate](https://github.com/vinissimus/next-translate)
+## Run Locally
 
-## Project structure
-
-In writing...
-
-## Getting Started
-
-First, run the development server:
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone https://github.com/starton-io/boilerplate-sign-in-with-wallets-next-js.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to the project directory
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+  cd boilerplate-sign-in-with-wallets-next-js
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Install dependencies
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+  npm install
+```
+
+Start the development server
+```bash
+  npm run dev
+```
 
 ## Learn More
 
