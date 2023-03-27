@@ -20,11 +20,8 @@ export interface StartonAuthCardProps extends CardProps {}
 |--------------------------------------------------------------------------
 */
 const StartonCard = styled(Card)(({ theme }) => ({
-	display: 'flex',
-	flexDirection: 'column',
-	justifyContent: 'center',
 	padding: theme.spacing(3, 5),
-	backgroundColor: theme.palette.background.default,
+	backgroundColor: theme.palette.background.paper,
 }))
 
 /*

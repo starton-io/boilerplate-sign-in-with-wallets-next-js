@@ -38,5 +38,4 @@ yarn-error.log*
 # others
 yarn.lock
 package-lock.json
-/.husky
 /.idea

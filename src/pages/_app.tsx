@@ -10,14 +10,13 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import type { AppProps } from 'next/app'
 import { DefaultSeo } from 'next-seo'
-import { Provider } from 'react-redux'
 import { deepmerge } from '@mui/utils'
 import { frFR, enUS, Localization } from '@mui/material/locale'
 import merge from 'lodash/merge'
 import { WagmiConfig } from 'wagmi'
 import { startonDarkTheme } from '@starton/ui-nextjs'
+import { AppLayout } from '../components/layout/AppLayout'
 import { DEFAULT_SEO_PROPS, DefaultSeoPropsExtra } from 'config/common/seo.config'
-import { store } from 'stores/store'
 import { createEmotionCache } from 'utils/createEmotionCache'
 import theme from 'styles/theme'
 import { useGetCanonialUrl } from 'hooks/useGetCanonialUrl'
@@ -92,17 +91,17 @@ export default function StartonApp({
 	// ----------------------------------------------------------------------------
 	return (
 		<CacheProvider value={emotionCache}>
-			<Provider store={store}>
-				<ThemeProvider theme={MUITheme}>
-					<DefaultSeo {...defaultDataProps} />
-					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-					<CssBaseline />
-					{/* Wrap in wagmi component and passing client to it*/}
-					<WagmiConfig client={wagmiClient}>
+			<ThemeProvider theme={MUITheme}>
+				<DefaultSeo {...defaultDataProps} />
+				{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+				<CssBaseline />
+				{/* Wrap in wagmi component and passing client to it*/}
+				<WagmiConfig client={wagmiClient}>
+					<AppLayout>
 						<Component {...pageProps} />
-					</WagmiConfig>
-				</ThemeProvider>
-			</Provider>
+					</AppLayout>
+				</WagmiConfig>
+			</ThemeProvider>
 		</CacheProvider>
 	)
 }

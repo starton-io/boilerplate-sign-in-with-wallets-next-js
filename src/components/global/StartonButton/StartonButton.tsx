@@ -1,8 +1,7 @@
 /*
 | Developed by Starton
 | Filename : StartonButton.tsx
-| Description : StartonButton component
-| Author : Maxime AIGUIER (maxime@starton.io)
+| Author : Philippe DESPLATS (philippe@starton.io)
 */
 
 import * as React from 'react'
