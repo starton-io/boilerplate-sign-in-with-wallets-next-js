@@ -1,17 +1,16 @@
 /*
 | Developed by Starton
-| Filename : SignInWithWallet.js
-| Author : Maxime AIGUIER (maxime@starton.io)
+| Filename : SignInWithWallet.tsx
+| Author : Philippe DESPLATS (philippe@starton.io)
 */
 
 import * as React from 'react'
-import { CardContent, Typography } from '@mui/material'
+import { CardContent, Typography, Box } from '@mui/material'
 import { useConnect } from 'wagmi'
 import Image from 'next/image'
 import useTranslation from 'next-translate/useTranslation'
-import { StartonBox } from 'components/StartonUtils/StartonBox'
-import { StartonButton } from 'components/StartonUtils/StartonButton'
-import { StartonAuthCard } from 'components/StartonUtils/StartonAuthCard'
+import { StartonButton } from 'components/global/StartonButton/StartonButton'
+import { StartonAuthCard } from 'components/global/StartonAuthCard/StartonAuthCard'
 
 /*
 |--------------------------------------------------------------------------
@@ -22,16 +21,15 @@ export default function SignInWithWallet() {
 	const { connect, connectors, error } = useConnect()
 	const { t } = useTranslation()
 
-	//utiliser styled pour les composants
 	return (
 		<StartonAuthCard>
-			<CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-				<StartonBox>
+			<CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+				<Box>
 					<Typography variant="h2" color={'secondary'}>
 						{t('index:content.sign-in-with')}
 					</Typography>
-				</StartonBox>
-				<StartonBox>
+				</Box>
+				<Box>
 					{connectors.map((connector) => (
 						<StartonButton variant={'contained'} key={connector.id} onClick={() => connect({ connector })}>
 							<Image
@@ -42,13 +40,13 @@ export default function SignInWithWallet() {
 							/>
 						</StartonButton>
 					))}
-				</StartonBox>
+				</Box>
 				{error ? (
-					<StartonBox>
+					<Box>
 						<Typography variant="body2" color={'error'}>
 							{error.message}
 						</Typography>
-					</StartonBox>
+					</Box>
 				) : null}
 			</CardContent>
 		</StartonAuthCard>
