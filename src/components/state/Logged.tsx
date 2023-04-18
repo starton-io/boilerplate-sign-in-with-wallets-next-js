@@ -1,7 +1,7 @@
 /*
 | Developed by Starton
 | Filename : Logged.tsx
-| Author : Philippe DESPLATS (philippe@starton.io)
+| Author : Philippe DESPLATS (philippe@starton.com)
 */
 
 import * as React from 'react'
