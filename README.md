@@ -5,9 +5,9 @@ Starton boilerplate to sign in with your wallet (Metamask, WalletConnect, Coinba
 
 Feel free to **[fork](https://github.com/login?return_to=%2Fstarton-io%2Fboilerplate-sign-in-with-wallets-next-js)** this repository!
 
-- Website: https://starton.io
-- Discord: https://discord.starton.io
-- Contact: hello@starton.io
+- Website: https://starton.com
+- Discord: https://discord.starton.com
+- Contact: hello@starton.com
 ## Tech Stack
 
 - [Wagmi](https://wagmi.sh/)
