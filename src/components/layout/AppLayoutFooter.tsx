@@ -7,7 +7,7 @@
 import React from 'react'
 import useTranslation from 'next-translate/useTranslation'
 import { Container, ContainerProps, Grid, styled, Typography } from '@mui/material'
-import { StartonButton } from '@starton/ui-nextjs'
+import { StartonButton } from '@starton/react-ui'
 import Link from 'next/link'
 
 /*
