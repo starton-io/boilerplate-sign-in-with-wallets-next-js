@@ -14,7 +14,7 @@ import { deepmerge } from '@mui/utils'
 import { frFR, enUS, Localization } from '@mui/material/locale'
 import merge from 'lodash/merge'
 import { WagmiConfig } from 'wagmi'
-import { startonDarkTheme } from '@starton/ui-nextjs'
+import { startonDarkTheme } from '@starton/react-ui'
 import { AppLayout } from '../components/layout/AppLayout'
 import { DEFAULT_SEO_PROPS, DefaultSeoPropsExtra } from 'config/common/seo.config'
 import { createEmotionCache } from 'utils/createEmotionCache'
@@ -22,7 +22,7 @@ import theme from 'styles/theme'
 import { useGetCanonialUrl } from 'hooks/useGetCanonialUrl'
 import { Dictionary } from 'utils'
 import { AvailableLanguages } from 'contracts'
-import { wagmiClient } from 'services/wagmi/wagmi.service'
+import { wagmiConfig } from 'services/wagmi/wagmi.service'
 
 /*
 |--------------------------------------------------------------------------
@@ -96,7 +96,7 @@ export default function StartonApp({
 				{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 				<CssBaseline />
 				{/* Wrap in wagmi component and passing client to it*/}
-				<WagmiConfig client={wagmiClient}>
+				<WagmiConfig config={wagmiConfig}>
 					<AppLayout>
 						<Component {...pageProps} />
 					</AppLayout>

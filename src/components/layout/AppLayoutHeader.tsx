@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { Container, ContainerProps, styled, Typography } from '@mui/material'
-import { StartonLogotype } from '@starton/ui-nextjs'
+import { StartonType } from '@starton/react-ui-iconography'
 import { Theme } from '@mui/system'
 import useTranslation from 'next-translate/useTranslation'
 
@@ -40,11 +40,10 @@ export const AppLayoutHeader: React.FC<AppLayoutHeaderProps> = () => {
 
 	return (
 		<Header>
-			<StartonLogotype sx={{ width: 200, height: 'auto' }} />
+			<StartonType sx={{ width: 200, height: 'auto' }} />
 			<Typography
 				variant={'h2'}
 				textAlign={'center'}
-				color={'secondary'}
 				sx={{ fontWeight: 'bold', fontSize: '2rem', marginTop: (theme: Theme) => theme.spacing(1) }}
 			>
 				{t('common:header.starton-tagline')}

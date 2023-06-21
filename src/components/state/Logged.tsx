@@ -29,7 +29,7 @@ export default function Logged() {
 				<Typography variant="body2" sx={{ fontWeight: 'bold' }}>
 					{t('index:content.connected')}
 				</Typography>
-				<Typography variant={'body2'} color={'secondary'}>
+				<Typography variant={'body2'} color={'primary.main'}>
 					{address}
 				</Typography>
 				<StartonButton variant="outlined" color="error" onClick={() => disconnect()} size={'large'}>

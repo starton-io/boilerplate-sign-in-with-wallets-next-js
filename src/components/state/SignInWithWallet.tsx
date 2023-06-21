@@ -25,13 +25,11 @@ export default function SignInWithWallet() {
 		<StartonAuthCard>
 			<CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
 				<Box>
-					<Typography variant="h2" color={'secondary'}>
-						{t('index:content.sign-in-with')}
-					</Typography>
+					<Typography variant="h2">{t('index:content.sign-in-with')}</Typography>
 				</Box>
 				<Box>
 					{connectors.map((connector) => (
-						<StartonButton variant={'contained'} key={connector.id} onClick={() => connect({ connector })}>
+						<StartonButton variant={'outlined'} key={connector.id} onClick={() => connect({ connector })}>
 							<Image
 								alt={connector.name}
 								src={`/${connector.name.replace(/\s/g, '')}.svg`}
